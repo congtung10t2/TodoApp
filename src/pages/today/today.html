@@ -6,4 +6,16 @@
 
 <ion-content padding>
   <h2>List task today</h2>
+  <ion-list>
+    <ion-item ion-item *ngFor="let item of items" (click)="itemSelected(item);">
+      <ion-label>{{ item.text }}</ion-label>
+      <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
+    </ion-item>
+    
+  </ion-list>
+  <ion-item *ngIf="isNewTask === true" >
+    <ion-input type="text" placeholder="new task" value="" [(ngModel)]='inputText' (input)="onChangeText($event.target.value);"></ion-input>
+  </ion-item>
+    
+  <button ion-button clear (click)="addTask();" [disabled]="isNewTask === true && canAddNewTask === false">Add task</button>
 </ion-content>
