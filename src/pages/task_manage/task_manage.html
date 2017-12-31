@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Task Manager
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item ion-item *ngFor="let item of items" (click)="itemSelected(item);">
+      <h2 class="left-text">{{ item.text }}</h2>
+      <button ion-button clear class="right-btn" (click)="edit(item);" *ngIf="isUpdating === false">Edit</button>
+      <button ion-button clear class="right-btn" (click)="delete(item);" *ngIf="isUpdating === false">Remove</button>
+    </ion-item>
+    
+  </ion-list>
+  <ion-item *ngIf="isUpdating === true" >
+    <ion-input type="text" [(ngModel)]='inputText' (input)="onChangeText($event.target.value);"></ion-input>
+  </ion-item>
+    
+  <button ion-button clear (click)="update();" *ngIf="isCanUpdate === true">Update</button>
+</ion-content>
+

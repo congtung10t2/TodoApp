@@ -27,6 +27,7 @@ export class TodayPage {
     else if(this.canAddNewTask){
       this.items.push({text: this.inputText+"", done: false});
       this.inputText = "";
+      this.isNewTask = false;
 
     }
     
